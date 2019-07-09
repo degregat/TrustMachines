@@ -1,6 +1,6 @@
 # Trust Machines
 
-We seek to implement practical mechanisms for enabling computational trust
+Practical automated mechanisms for enabling computational trust, requiring only a mapping from agent types to utilities
 
 ## Wilson
 ### A Self-tuning, Aproximately truthful, practical mechanisms for surplus optimization, via differential privacy.
