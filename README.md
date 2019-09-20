@@ -1,4 +1,4 @@
-# Trust Machines
+# Towards trust-minimized learning mechanisms
 
 Practical automated mechanisms for enabling computational trust, requiring only a mapping from agent types to utilities
 
