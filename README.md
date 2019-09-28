@@ -20,3 +20,22 @@ the objective that is being optimized could be either:
 
 The next is to minimize 
 Reduces the trust required for the mechanism by probably limiting its side effects.
+
+
+#### Notes
+
+We used TensorFlow Privacy to make the RegretNet approach of [Optimal Auctions through Deep Learning](https://github.com/saisrivatsan/deep-opt-auctions) Differentially Private (DP), resulting in Approximate Truthfulness and Collusion Resistance in the sense of “Mechanism Design via Differential Privacy" (Frank McSherry and Kunal Talwar, In FOCS, pages 94–103, 2007). This means we can relax the assumption of having prior knowledge of the valuation profiles.
+   
+You can find the code here:
+https://github.com/degregat/deep-opt-auctions/
+
+And examples here:
+https://github.com/degregat/deep-opt-auctions#examples
+
+(Implementation: The lagrange_update in our fork is differentially private, bounding the rate of change of the lagrange multipliers on the regret per agent. Therefore, the influence each agent has on the resulting allocation and payment functions is bounded.)
+
+In the next steps we want to minimize the trust needed in the execution of the mechanism. 
+
+We are currently porting the DP fork to a Federated Learner with Multiparty Computation (MPC) using tf-encrypted. This way, the gradient updates from locally DP models will be aggregated confidentially, subject to the constraints of the MPC. This will already increase the privacy budget for many useful cases. It also reduces the trust needed by the agents in the aggregator.
+
+The next improvement will be to use a differentially private learner in the trusted curator model on MPC. Since this distributes the DP mechanism, trust in individual agents to apply it correctly can be reduced. Also, the trusted curator setup provides better robustness/accuracy tradeoffs.
